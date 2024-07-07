@@ -1,19 +1,23 @@
-import { conectaAPI } from "./conectaAPI.js";  // Llamado del manager
+import { conectaAPI } from "./conectaAPI.js";
 
-const formulario = document.querySelector("[data-formulario]");  // Buscar el elemento en el DOM
+const formulario = document.querySelector("[data-formulario]");
 
-// Función asíncrona para manejar la creación de un nuevo video
-async function crearVideo(evento) {
-    evento.preventDefault();  // Prevenir el comportamiento por defecto del formulario
+//validaciones
 
-    const imagen = document.querySelector("[data-imagen]").value;  // Obtener el valor de la imagen
-    const url = document.querySelector("[data-url]").value;        // Obtener el valor de la URL
-    const titulo = document.querySelector("[data-titulo]").value;  // Obtener el valor del título
-    const descripcion = Math.floor(Math.random() * 10).toString(); // Generar una descripción aleatoria
+async function crearVideo(evento){
+    evento.preventDefault();
+    const imagen= document.querySelector("[data-imagen]").value;
+    const url = document.querySelector("[data-url]").value;
+    const titulo=document.querySelector("[data-titulo]").value;
+    const descripcion = Math.floor(Math.random*10).toString();
 
-    await conectaAPI.crearVideo(titulo, descripcion, url, imagen); // Llamar a la función para crear un nuevo video
-
-    window.location.href = "../pages/envio-concluido.html";  // Redirigir a la página de confirmación
+    try{
+        await conectaAPI.crearVideo(titulo,descripcion,url,imagen)
+    
+        window.location.href="../pages/envio-concluido.html"
+    }catch(e){
+        alert(e);
+    }
 }
 
-formulario.addEventListener("submit", evento => crearVideo(evento));  // Añadir el manejador de evento al formulario
+formulario,addEventListener("submit",evento=>crearVideo(evento));
