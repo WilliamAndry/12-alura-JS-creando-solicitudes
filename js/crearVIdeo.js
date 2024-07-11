@@ -12,7 +12,7 @@ async function crearVideo(evento){
     const descripcion = Math.floor(Math.random*10).toString();
 
     try{
-        await conectaAPI.crearVideo(titulo,descripcion,url,imagen)
+        await conectaAPI.enviarVideo(titulo,descripcion,url,imagen)
     
         window.location.href="../pages/envio-concluido.html"
     }catch(e){

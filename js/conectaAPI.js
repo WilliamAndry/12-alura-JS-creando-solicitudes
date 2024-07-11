@@ -7,7 +7,7 @@ async function listaVideos() {
 }
 
 // Función asíncrona para crear un video
-async function crearVideo(titulo, descripcion, url, imagen) {
+async function enviarVideo(titulo, descripcion, url, imagen) {
     const conexion = await fetch("http://localhost:3001/videos", {   // Llamado de la información del servidor
         method: "POST",                                             // Tipo de método a utilizar
         headers: {
@@ -36,7 +36,7 @@ async function buscarVideo(referencia){
 
 // Exportar las funciones
 export const conectaAPI = {
-    listaVideos, crearVideo, buscarVideo
+    listaVideos, enviarVideo, buscarVideo
 }
 
 /*
